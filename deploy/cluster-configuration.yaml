@@ -64,18 +64,18 @@ spec:
       externalElasticsearchUrl: ""
       externalElasticsearchPort: ""
   alerting:                # (CPU: 0.1 Core, Memory: 100 MiB) It enables users to customize alerting policies to send messages to receivers in time with different time intervals and alerting levels to choose from.
-    enabled: false         # Enable or disable the KubeSphere Alerting System.
+    enabled: true        # Enable or disable the KubeSphere Alerting System.
     # thanosruler:
     #   replicas: 1
     #   resources: {}
   auditing:                # Provide a security-relevant chronological set of records，recording the sequence of activities happening on the platform, initiated by different tenants.
-    enabled: false         # Enable or disable the KubeSphere Auditing Log System.
+    enabled: true        # Enable or disable the KubeSphere Auditing Log System.
     # operator:
     #   resources: {}
     # webhook:
     #   resources: {}
   devops:                  # (CPU: 0.47 Core, Memory: 8.6 G) Provide an out-of-the-box CI/CD system based on Jenkins, and automated workflow tools including Source-to-Image & Binary-to-Image.
-    enabled: false             # Enable or disable the KubeSphere DevOps System.
+    enabled: true             # Enable or disable the KubeSphere DevOps System.
     # resources: {}
     jenkinsMemoryLim: 2Gi      # Jenkins memory limit.
     jenkinsMemoryReq: 1500Mi   # Jenkins memory request.
@@ -84,7 +84,7 @@ spec:
     jenkinsJavaOpts_Xmx: 512m
     jenkinsJavaOpts_MaxRAM: 2g
   events:                  # Provide a graphical web console for Kubernetes Events exporting, filtering and alerting in multi-tenant Kubernetes clusters.
-    enabled: false         # Enable or disable the KubeSphere Events System.
+    enabled: true        # Enable or disable the KubeSphere Events System.
     # operator:
     #   resources: {}
     # exporter:
@@ -94,14 +94,14 @@ spec:
     #   replicas: 2
     #   resources: {}
   logging:                 # (CPU: 57 m, Memory: 2.76 G) Flexible logging functions are provided for log query, collection and management in a unified console. Additional log collectors can be added, such as Elasticsearch, Kafka and Fluentd.
-    enabled: false         # Enable or disable the KubeSphere Logging System.
-    containerruntime: docker
+    enabled: true       # Enable or disable the KubeSphere Logging System.
+    containerruntime: containerd
     logsidecar:
       enabled: true
       replicas: 2
       # resources: {}
   metrics_server:                    # (CPU: 56 m, Memory: 44.35 MiB) It enables HPA (Horizontal Pod Autoscaler).
-    enabled: false                   # Enable or disable metrics-server.
+    enabled: true                   # Enable or disable metrics-server.
   monitoring:
     storageClass: ""                 # If there is an independent StorageClass you need for Prometheus, you can specify it here. The default StorageClass is used by default.
     node_exporter:
@@ -141,10 +141,10 @@ spec:
     ippool: # Use Pod IP Pools to manage the Pod network address space. Pods to be created can be assigned IP addresses from a Pod IP Pool.
       type: none # Specify "calico" for this field if Calico is used as your CNI plugin. "none" means that Pod IP Pools are disabled.
     topology: # Use Service Topology to view Service-to-Service communication based on Weave Scope.
-      type: none # Specify "weave-scope" for this field to enable Service Topology. "none" means that Service Topology is disabled.
+      type: weave-scope # Specify "weave-scope" for this field to enable Service Topology. "none" means that Service Topology is disabled.
   openpitrix: # An App Store that is accessible to all platform tenants. You can use it to manage apps across their entire lifecycle.
     store:
-      enabled: false # Enable or disable the KubeSphere App Store.
+      enabled: ture # Enable or disable the KubeSphere App Store.
   servicemesh:         # (0.3 Core, 300 MiB) Provide fine-grained traffic management, observability and tracing, and visualized traffic topology.
     enabled: false     # Base component (pilot). Enable or disable KubeSphere Service Mesh (Istio-based).
   kubeedge:          # Add edge nodes to your cluster and deploy workloads on edge nodes.
